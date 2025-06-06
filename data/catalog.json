@@ -1,0 +1,134 @@
+{
+    "chest": [
+        "barbell bench presses",
+        "dumbbell bench presses",
+        "incline barbell bench presses",
+        "incline dumbbell presses",
+        "decline bench presses",
+        "chest flies (machine or cable)",
+        "push-ups",
+        "dips (chest lean)",
+        "cable crossovers",
+        "pec decks",
+        "chest press"
+    ],
+    "back": [
+        "pull-ups",
+        "chin-ups",
+        "lat pulldowns",
+        "barbell rows",
+        "dumbbell rows",
+        "cable rows",
+        "t-bar rows",
+        "deadlifts",
+        "trap bar deadlifts",
+        "face pulls"
+    ],
+    "quads": [
+        "barbell back squats",
+        "front squats",
+        "hack squats",
+        "leg presses",
+        "lunges",
+        "bulgarian split squats",
+        "step-ups",
+        "leg extensions (machine)"
+    ],
+    "hamstrings": [
+        "romanian deadlifts",
+        "leg curls (machine)"
+    ],
+    "calves": [
+        "calf raises (standing)",
+        "calf raises (seated)"
+    ],
+    "shoulders": [
+        "overhead presses (barbell)",
+        "dumbbell shoulder presses",
+        "arnold presses",
+        "lateral raises",
+        "front raises",
+        "rear delt flies",
+        "face pulls",
+        "upright rows",
+        "cable lateral raises"
+    ],
+    "biceps": [
+        "barbell curls",
+        "dumbbell curls",
+        "hammer curls",
+        "preacher curls",
+        "concentration curls",
+        "cable curls",
+        "ez bar curls",
+        "zottman curls"
+    ],
+    "triceps": [
+        "triceps pushdowns",
+        "skull crushers",
+        "close-grip bench presses",
+        "overhead triceps extensions",
+        "dips (triceps focus)",
+        "dumbbell kickbacks",
+        "cable overhead extensions"
+    ],
+    "core": [
+        "planks",
+        "sit-ups",
+        "crunches",
+        "hanging leg raises",
+        "russian twists",
+        "bicycle crunches",
+        "ab wheel rollouts",
+        "mountain climbers",
+        "cable woodchoppers",
+        "dead bugs"
+    ],
+    "glutes": [
+        "hip thrusts",
+        "glute bridges",
+        "sumo deadlifts",
+        "bulgarian split squats",
+        "step-ups",
+        "cable kickbacks",
+        "kettlebell swings",
+        "resistance band abductions"
+    ],
+    "traps": [
+        "barbell shrugs",
+        "dumbbell shrugs",
+        "farmer's carries",
+        "rack pulls",
+        "face pulls"
+    ],
+    "forearms": [
+        "wrist curls",
+        "reverse wrist curls",
+        "hammer curls",
+        "farmer's carries",
+        "reverse curls",
+        "towel pull-ups"
+    ],
+    "cardio": [
+        "jump ropes",
+        "runs",
+        "cyclings",
+        "rowing machine sessions",
+        "stair climbers",
+        "swimmings",
+        "high knees",
+        "burpees",
+        "jumping jacks"
+    ],
+    "mobility": [
+        "hamstring stretches",
+        "hip flexor stretches",
+        "cat-cow stretches",
+        "child's poses",
+        "pigeon poses",
+        "shoulder dislocations",
+        "thoracic extensions",
+        "quad stretches",
+        "couch stretches"
+    ]
+}

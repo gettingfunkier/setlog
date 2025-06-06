@@ -1,0 +1,15 @@
+# Bytecode
+__pycache__/
+*.pyc
+
+# User-specific data
+data/cache.json
+data/log.csv
+workouts/*.txt
+
+# macOS metadata
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
