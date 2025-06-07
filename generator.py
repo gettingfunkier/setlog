@@ -14,13 +14,13 @@ def save_catalog(catalog):
 
 def input_groups():
     groups = []
-    group = input("add group ['/' to finish]: ")
+    group = input("add group ['/' to finish]: ").strip().lower()
     while not group or group == "/":
         print("[x] No groups provided. Please enter at least one group.")
-        group = input("add group ['/' to finish]: ")
+        group = input("add group ['/' to finish]: ").strip().lower()
     while group != "/":
         groups.append(group)
-        group = input("add group ['/' to finish]: ")
+        group = input("add group ['/' to finish]: ").strip().lower()
     print("")
     return groups
     
@@ -120,7 +120,7 @@ def add_to_catalog():
 def receive_from_creator(exercise):
     catalog = load_catalog()
     if not any(exercise in group for group in catalog.values()):
-        switch = input(f"\n[!] Exercise '{exercise}' not found in catalog. Add it? [y/n]: ").lower()
+        switch = input(f"\n[!] Exercise '{exercise}' not found in catalog. Add it? [y/n]: ").lower().strip()
         if switch == "y":
             group = input("\nEnter muscle group to add exercise to: ").strip().lower()
             if group not in catalog:
@@ -199,7 +199,7 @@ def options():
 def generate():
     while True:
         menu()
-        inp = input("> ").lower()
+        inp = input("> ").lower().strip()
         if inp == "r":
             create_workout()
         elif inp == "p":

@@ -40,13 +40,13 @@ def get_valid_date(prompt="date [YYYY-MM-DD]: "):
 def add_data(data):
     try:
         date = get_valid_date()
-        name = input("name: ").lower()
+        name = input("name: ").lower().strip()
         while not name:
             print("\n[!] Must have a name!")
-            name = input("name: ").lower()
-        sets = input("sets: ")
-        reps = input("reps: ")
-        weight = input("weight: ")
+            name = input("name: ").lower().strip()
+        sets = input("sets: ").strip()
+        reps = input("reps: ").strip()
+        weight = input("weight: ").strip()
 
         try:
             sets = int(sets)
@@ -77,7 +77,7 @@ def filter_logs(data):
         print("\n[x] No data available.")
         return
     
-    inp = input("\nFilter by?\n1 - date\n2 - exercise\n\n> ").strip()
+    inp = input("\nFilter by?\n1. date\n2. exercise\n\n> ").strip()
 
     if inp == "1":
         switch = True
@@ -87,7 +87,7 @@ def filter_logs(data):
 
     elif inp == "2":
         switch = False
-        exercise = input("Exercise name: ").lower()
+        exercise = input("Exercise name: ").lower().strip()
         vessel = exercise
         sortby = [row for row in data if row[1].lower() == exercise]
 
@@ -128,7 +128,7 @@ def filter_logs(data):
     
 
 def delete_entry(data):
-    by = input("\nDelete by?\n1 - date\n2 - exercise\n3 - entry\n\n> ").strip()
+    by = input("\nDelete by?\n1. date\n2. exercise\n3. entry\n\n> ").strip()
     
     def remove_by_date(data):
         date = get_valid_date()
@@ -141,7 +141,7 @@ def delete_entry(data):
             return sortby
 
     def remove_by_exercise(data):
-        exercise = input("Exercise name: ").lower()
+        exercise = input("Exercise name: ").lower().strip()
         sortby = [row for row in data if row[1].lower() != exercise]
 
         if len(sortby) == len(data):
@@ -152,7 +152,7 @@ def delete_entry(data):
 
     def remove_by_entry(data):
         date = get_valid_date()
-        exercise = input("Exercise name: ").lower()
+        exercise = input("Exercise name: ").lower().strip()
         sortby = [row for row in data if not (row[0] == date and row[1].lower() == exercise)]
 
         if len(sortby) == len(data):
@@ -281,7 +281,7 @@ def log():
     data = load_data()
     while True:
         menu()
-        inp = input("> ").lower()
+        inp = input("> ").lower().strip()
         if inp == "a":
             add_data(data)
         elif inp == "f":

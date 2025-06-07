@@ -13,18 +13,18 @@ def saveFile(workout): # saves information to JSON file
         json.dump(workout, file, indent = 4)
 
 def addEx(workout): # writes a new exercise
-    name = input("name: ")
+    name = input("name: ").lower().strip()
     while not name:
         print("\n[!] Must have a name!")
-        name = input("name: ")
-    sets = input("sets: ")
-    reps = input("reps: ")
-    weight = input("weight: ")
+        name = input("name: ").lower().strip()
+    sets = input("sets: ").strip()
+    reps = input("reps: ").strip()
+    weight = input("weight: ").strip()
 
     checkCatalog(name)
 
     if name in workout:
-        confirm = input(f"[!] '{name}' already exists. Overwrite? [y/n]: ").lower()
+        confirm = input(f"[!] '{name}' already exists. Overwrite? [y/n]: ").lower().strip()
         if confirm != 'y':
             return
     workout[name] = {'sets': sets, 'reps': reps, 'weight': weight}
@@ -77,14 +77,14 @@ def viewWorkout(workout): # prints current workout
 
 def exportFile(workout):  # exports current workout to txt, always in sync with JSON
     with open(filewrite, "w") as file:
-        heading = input("\n[>] Add title? (opt.) ")
+        heading = input("\n[>] Add title? (opt.) ").strip()
         if heading:
             file.write(f"{heading}\n")
-            weekdays = input(f"[>] Weekdays for {heading}? (opt.) ")
+            weekdays = input(f"[>] Weekdays for {heading}? (opt.) ").strip()
             if weekdays:
                 file.write(f"For {weekdays}:\n")
         else:
-            weekdays = input(f"[>] Weekdays? (opt.) ")
+            weekdays = input(f"[>] Weekdays? (opt.) ").strip()
             if weekdays:
                 file.write(f"For {weekdays}:\n")
 
@@ -127,7 +127,7 @@ def exportFile(workout):  # exports current workout to txt, always in sync with 
 
 def resetData(workout, check): # erases all data
     if check == True:
-        confirm = input("\n[!] will erase all data, proceed? y/n\n> ")
+        confirm = input("\n[!] will erase all data, proceed? y/n\n> ").lower().strip()
 
         if confirm == "y":
             workout.clear()
@@ -159,7 +159,7 @@ def menu():
 def create():
     while True:
         menu()
-        act = input("> ")
+        act = input("> ").lower().strip()
         workout = importData()
         if act == "a":
             addEx(workout)
@@ -181,9 +181,9 @@ def receive_from_generator(exercise_list):
 
     for exercise in exercise_list:
         print(f"\n> editing '{exercise}'")
-        sets = input("sets: ")
-        reps = input("reps: ")
-        weight = input("weight: ")
+        sets = input("sets: ").strip()
+        reps = input("reps: ").strip()
+        weight = input("weight: ").strip()
 
         workout[exercise] = {'sets': sets, 'reps': reps, 'weight': weight}
         print(f"\n[i] '{exercise}' logged!")
