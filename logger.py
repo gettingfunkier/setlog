@@ -128,7 +128,7 @@ def filter_logs(data):
     
 
 def delete_entry(data):
-    by = input("\nDelete by?\n1. date\n2. exercise\n3. entry\n\n> ").strip()
+    by = input("\nDelete by?\n1. date\n2. exercise\n3. entry\n4. clear file\n\n> ").strip()
     
     def remove_by_date(data):
         date = get_valid_date()
@@ -161,6 +161,15 @@ def delete_entry(data):
         else:
             print(f"\n[i] Removed {exercise} on {date}.")
             return sortby
+        
+    def remove_all(data):
+        confirm = input("\nAre you sure you want to delete all entries? [y/n]: ").lower().strip()
+        if confirm == 'y':
+            print("\n[i] All entries deleted!")
+            return [["Date", "Exercise", "Sets", "Reps", "Weight"]]
+        else:
+            print("\n[i] No entries deleted.")
+            return data
 
     if by == "1":
         data = remove_by_date(data)
@@ -170,6 +179,9 @@ def delete_entry(data):
 
     elif by == "3":
         data = remove_by_entry(data)
+
+    elif by == "4":
+        data = remove_all(data)
 
     else:
         print("\n[!] Invalid input!")
