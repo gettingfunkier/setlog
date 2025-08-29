@@ -67,9 +67,9 @@ def create_workout(groups=None):
     print(f"[i] Workout generated in '{filewrite}'!")
 
 
-def send_to_creator(picked_exercises):
+def send_to_creator(exercise_list):
     from creator import receive_from_generator
-    receive_from_generator(picked_exercises)
+    receive_from_generator(exercise_list)
     
 def print_groups():
     print("\nAvailable groups:")

@@ -66,6 +66,7 @@ def add_data(data):
         log = [date, name, sets, reps, weight]
         data.append(log)
 
+        print("\n[i] New entry added!")
         return save_data(data)
     except Exception:
         print(f"\n[!] Error: {Exception}")
