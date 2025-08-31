@@ -33,7 +33,7 @@ def get_exercises(groups):
             try:
                 filtered_exercises[type] = cache[type]
             except(KeyError):
-                print(f" -> Unable to get data for '{type}': invalid group")
+                print(f" ➤ Unable to get data for '{type}': invalid group")
                 switch = True
         if switch == True:
             print("")

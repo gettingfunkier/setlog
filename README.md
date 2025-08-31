@@ -86,9 +86,14 @@ add group ['/' to finish]: chest
 add group ['/' to finish]: biceps
 add group ['/' to finish]: back
 add group ['/' to finish]: triceps
+add group ['/' to finish]: spelling mistake
 add group ['/' to finish]: shoulders
+add group ['/' to finish]: reporte
 add group ['/' to finish]: cardio
 add group ['/' to finish]: /
+
+ ➤ Unable to get data for 'spelling mistake': invalid group
+ ➤ Unable to get data for 'reporte': invalid group
 
 [i] Workout generated in 'workouts/generated_workout.txt'!
 ```
@@ -380,7 +385,7 @@ incline dumbbell press: 3 sets of 12 reps, at 25.0kg
 ## 🚏 | Roadmap
 - Currently working on a more complete catalog structure, which includes specific areas for muscle groups (eg. upper/lower chest), and notes of how to perform each exercise
 
-## License
+## 💾 | License
 This project is licensed under the MIT License — see the [LICENSE](./LICENSE) file for details.
 
 ## 💌 | Acknowledgements
