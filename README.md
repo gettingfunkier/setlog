@@ -392,7 +392,7 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 
 This project grew out of three separate scripts I wrote at different points in my first year of Software Engineering:
 
-- creator.py - my earliest attempt at building something practical, done early in the year.
+- **creator.py** - my earliest attempt at building something practical, done early in the year.
 
 - **logger.py** - written much later in the academic year as I gained more confidence.
 
