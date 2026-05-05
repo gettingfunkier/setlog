@@ -41,9 +41,11 @@ def add_data(data):
     try:
         date = get_valid_date()
         name = input("name: ").lower().strip()
+
         while not name:
             print("\n[!] Must have a name!")
             name = input("name: ").lower().strip()
+
         sets = input("sets: ").strip()
         reps = input("reps: ").strip()
         weight = input("weight: ").strip()
@@ -199,8 +201,8 @@ def view_logs(data):
         return
     
     print("\nWORKOUT LOGS:")
-    print(f"{'Date':<12} {'Exercise':<25} {'Sets':<5} {'Reps':<5} {'Weight (kg)':<12}")
-    print(f"-" * 57)
+    print(f"{'Date':<12} {'Exercise':<{get_max_exercise_length(data)}} {'Sets':<5} {'Reps':<5} {'Weight (kg)':<12}")
+    print(f"-" * (42 + get_max_exercise_length(data)))
 
     for row in data[1:]:
         if int(row[2]) != 0:
@@ -216,7 +218,7 @@ def view_logs(data):
         else:
             weight = ''
             
-        print(f"{row[0]:<12} {row[1]:<25} {sets:<5} {reps:<5} {weight:<12}")
+        print(f"{row[0]:<12} {row[1]:<{get_max_exercise_length(data)}} {sets:<5} {reps:<5} {weight:<12}")
 
 
 def progress_track(data):
@@ -284,6 +286,13 @@ def export_data(data):
 
             file.write("\n")
     print(f"\n[i] Exported successfully to '{filewrite}'!")
+
+def get_max_exercise_length(data):
+    max_length = 0
+    for row in data[1:]:
+        if len(row[1]) > max_length:
+            max_length = len(row[1])
+    return max_length
 
 def menu():
     print("\nLog Session...")
