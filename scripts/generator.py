@@ -6,6 +6,7 @@ filewrite = "workouts/generated_workout.txt"
 def load_catalog():
     with open(fileread, "r") as file:
         catalog = json.load(file)
+
     return catalog
 
 def save_catalog(catalog):
@@ -15,55 +16,71 @@ def save_catalog(catalog):
 def input_groups():
     groups = []
     group = input("add group ['/' to finish]: ").strip().lower()
+
     while not group or group == "/":
         print("[x] No groups provided. Please enter at least one group.")
         group = input("add group ['/' to finish]: ").strip().lower()
+
     while group != "/":
         groups.append(group)
         group = input("add group ['/' to finish]: ").strip().lower()
+        
     print("")
+
     return groups
     
 def get_exercises(groups):
     switch = False
+
     try:
         filtered_exercises = {}
         cache = load_catalog()
+
         for type in groups:
             try:
                 filtered_exercises[type] = cache[type]
             except(KeyError):
                 print(f" ➤ Unable to get data for '{type}': invalid group")
                 switch = True
+
         if switch == True:
             print("")
+
         return filtered_exercises
+    
     except(FileNotFoundError, json.JSONDecodeError):
         return None
     
 def pick_exercises(groups=None):
     if groups is None:
         groups = input_groups()
+
     if not groups:
         print("[x] No groups provided. Cancelling operation.")
         return {}
+    
     filtered_exercises = get_exercises(groups)
     picked_exercises = {}
+
     for group, exercises in filtered_exercises.items():
         if not isinstance(exercises, list) or len(exercises) == 0:
             print(f"\n[x] No exercises in group '{group}'")
             continue
         picked_exercises[group] = random.choice(exercises)
+
     return picked_exercises
 
 def create_workout(groups=None):
     picked_exercises = pick_exercises(groups)
+
     if not picked_exercises:
         print("[x] No exercises picked. Cancelling operation.")
         return
+    
     with open(filewrite, 'w') as file:
         for exercise in picked_exercises:
             file.write(f"{picked_exercises[exercise]}\n".title())
+
     print(f"[i] Workout generated in '{filewrite}'!")
 
 
@@ -73,6 +90,7 @@ def send_to_creator(exercise_list):
     
 def print_groups():
     print("\nAvailable groups:")
+
     with open(fileread) as file:
         cache = json.load(file)
     for group in cache:
@@ -99,10 +117,12 @@ def add_to_catalog():
 
         elif switch == "2":
             group = input("Enter muscle group to add exercise to: ").strip().lower()
+
             if group not in catalog:
                 print(f"[!] Group '{group}' doesn't exist. Please add it first.")
                 continue
             exercise = input("Enter exercise name to add: ").strip().lower()
+
             if exercise in catalog[group]:
                 print(f"[!] Exercise '{exercise}' already exists in group '{group}'.")
             else:
@@ -119,10 +139,13 @@ def add_to_catalog():
 
 def receive_from_creator(exercise):
     catalog = load_catalog()
+
     if not any(exercise in group for group in catalog.values()):
         switch = input(f"\n[!] Exercise '{exercise}' not found in catalog. Add it? [y/n]: ").lower().strip()
+
         if switch == "y":
             group = input("\nEnter muscle group to add exercise to: ").strip().lower()
+            
             if group not in catalog:
                 catalog[group] = []
 
@@ -149,14 +172,18 @@ def group_presets():
 
 def show_presets():
     presets = group_presets()
+
     print("\nAvailable presets:\n")
+
     for preset in presets:
         print(f"> {preset.title()}:\n {', '.join(presets[preset])}\n")
 
 def pick_preset():
     show_presets()
+
     preset = input("Enter preset name: ").strip().lower()
     presets = group_presets()
+    
     if preset in presets:
         return presets[preset]
     else:
@@ -168,6 +195,7 @@ def get_generated_workout():
         with open(filewrite, 'r') as file:
             workout = file.readlines()
         return [exercise.strip().lower() for exercise in workout]
+    
     except FileNotFoundError:
         print(f"\n[!] No generated workout found at '{filewrite}'.")
         return []
@@ -178,7 +206,8 @@ def menu():
     print("   [R] Run\n   [P] Presets\n   [O] Options\n\n[.] Menu")
 
 def options():
-    switch = input("\nOptions:\n    1. Add to catalog\n    2. View groups\n    3. Create plan\n    4. Exit\n> ").strip()    
+    switch = input("\nOptions:\n    1. Add to catalog\n    2. View groups\n    3. Create plan\n    4. Exit\n> ").strip()  
+
     if switch == "1":
         add_to_catalog()
     elif switch == "2":
@@ -199,7 +228,9 @@ def options():
 def generate():
     while True:
         menu()
+
         inp = input("> ").lower().strip()
+        
         if inp == "r":
             create_workout()
         elif inp == "p":

@@ -240,6 +240,7 @@ def export_data(data):
     data = load_data()
 
     vessel_data = []
+    
     for row in data[1:]:
         if row[0] not in vessel_data:
             vessel_data.append(row[0])
@@ -301,6 +302,7 @@ def menu():
 
 def log():
     data = load_data()
+    
     while True:
         menu()
         inp = input("> ").lower().strip()

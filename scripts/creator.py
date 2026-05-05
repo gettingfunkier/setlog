@@ -5,6 +5,7 @@ filewrite = "workouts/my_workout.txt"
 
 def importData(): # gets information from JSON file
     workout = {}
+
     with open(filename, "r") as file:
         return json.load(file)
 
@@ -14,9 +15,11 @@ def saveFile(workout): # saves information to JSON file
 
 def addEx(workout): # writes a new exercise
     name = input("name: ").lower().strip()
+
     while not name:
         print("\n[!] Must have a name!")
         name = input("name: ").lower().strip()
+
     sets = input("sets: ").strip()
     reps = input("reps: ").strip()
     weight = input("weight: ").strip()
@@ -25,8 +28,10 @@ def addEx(workout): # writes a new exercise
 
     if name in workout:
         confirm = input(f"[!] '{name}' already exists. Overwrite? [y/n]: ").lower().strip()
+
         if confirm != 'y':
             return
+        
     workout[name] = {'sets': sets, 'reps': reps, 'weight': weight}
     print(f"\n[i] '{name}' logged!")
     saveFile(workout)
@@ -78,13 +83,17 @@ def viewWorkout(workout): # prints current workout
 def exportFile(workout):  # exports current workout to txt, always in sync with JSON
     with open(filewrite, "w") as file:
         heading = input("\n[>] Add title? (opt.) ").strip()
+
         if heading:
             file.write(f"{heading}\n")
             weekdays = input(f"[>] Weekdays for {heading}? (opt.) ").strip()
+
             if weekdays:
                 file.write(f"For {weekdays}:\n")
+
         else:
             weekdays = input(f"[>] Weekdays? (opt.) ").strip()
+
             if weekdays:
                 file.write(f"For {weekdays}:\n")
 
@@ -107,8 +116,10 @@ def exportFile(workout):  # exports current workout to txt, always in sync with 
             desc = ""
             if sets:
                 desc += f"{sets} set{'s' if sets > 1 else ''}"
+
                 if reps:
                     desc += f" of {reps} rep{'s' if reps > 1 else ''}"
+                    
             elif reps:
                 desc += f"{reps} rep{'s' if reps > 1 else ''}"
 
@@ -120,6 +131,7 @@ def exportFile(workout):  # exports current workout to txt, always in sync with 
 
             if desc:
                 file.write(f"{exercise.title()}: {desc}\n")
+
             else:
                 file.write(f"{exercise.title()}\n")
 
@@ -131,6 +143,7 @@ def resetData(workout, check): # erases all data
 
         if confirm == "y":
             workout.clear()
+
             with open(filename, "w") as file:
                 json.dump(workout, file,)
             
@@ -146,6 +159,7 @@ def resetData(workout, check): # erases all data
 
     elif check == False:
         workout.clear()
+
         with open(filename, "w") as file:
             json.dump(workout, file,)
         
@@ -161,6 +175,7 @@ def create():
         menu()
         act = input("> ").lower().strip()
         workout = importData()
+
         if act == "a":
             addEx(workout)
         elif act == "v":
@@ -190,4 +205,5 @@ def receive_from_generator(exercise_list):
 
     saveFile(workout)
     exportFile(workout)
+    
     return
